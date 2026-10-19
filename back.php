@@ -77,7 +77,7 @@ if (!isset($_SESSION['admin'])) {
 						</h2>
 						<button class="btn-accent" onclick="history.back()">回上一頁</button>
 					</div>
-					
+
 					<?php
 					$do = $_GET['do'] ?? "student_list";
 					$file = "./back/" . $do . ".php";
@@ -99,12 +99,13 @@ if (!isset($_SESSION['admin'])) {
 		</div>
 	</footer>
 
-    <script>
-        $(window).on('click', function(e) {
-            if ($(e.target).is('#cover')) {
-                cl('#cover');
-            }
-        });
-    </script>
+	<script>
+		$(window).on('click', function(e) {
+			if ($(e.target).is('#cover')) {
+				cl('#cover');
+			}
+		});
+	</script>
 </body>
+
 </html>
