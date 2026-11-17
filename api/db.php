@@ -122,11 +122,16 @@ Class DB
     }
 }
 
-function q($sql)
-{
-    $dsn = "mysql:host=localhost;dbname=school_system;charset=utf8";
-    $pdo = new PDO($dsn, 'root', '');
-    return $pdo->query($sql)->fetchALL(PDO::FETCH_ASSOC);
+function q($sql){
+    $host   = getenv('DB_HOST') ?: '127.0.0.1';
+    $port   = getenv('DB_PORT') ?: '3306';
+    $user   = getenv('DB_USERNAME') ?: 'root';
+    $pass   = getenv('DB_PASSWORD') !== false ? getenv('DB_PASSWORD') : '';
+    $dbname = 'db03';
+
+    $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
+    $pdo = new PDO($dsn, $user, $pass);
+    return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function to($url)
