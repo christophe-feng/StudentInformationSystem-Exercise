@@ -130,7 +130,9 @@ function q($sql){
     $dbname = 'school_system';
 
     $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
-    $pdo = new PDO($dsn, $user, $pass);
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
